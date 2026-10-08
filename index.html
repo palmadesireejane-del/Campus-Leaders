@@ -1,2864 +1,1165 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>CICI Leaders | ITPE3</title>
 
 <style>
-
-/* =========================================================
-   ROOT
-========================================================= */
-
+/* ROOT */
 :root{
-
-    --pink:#ff2fa7;
-    --pink2:#ff69c4;
-    --purple:#8b35ff;
-    --purple2:#bd63ff;
-
-    --dark:#090611;
-    --dark2:#10091b;
-    --card:#171021;
-
-    --white:#ffffff;
-    --text:#f7efff;
-    --muted:#aa9bb8;
-
+    --pink:#ff2fa7; --pink2:#ff69c4; --purple:#8b35ff; --purple2:#bd63ff;
+    --dark:#090611; --dark2:#10091b; --card:#171021;
+    --white:#ffffff; --text:#f7efff; --muted:#aa9bb8;
     --border:rgba(255,255,255,.10);
-
 }
 
-
-/* =========================================================
-   RESET
-========================================================= */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    scroll-behavior:smooth;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
+/* RESET */
+*{ margin:0; padding:0; box-sizing:border-box; scroll-behavior:smooth; }
+html{ scroll-behavior:smooth; }
 body{
-
-    font-family:
-    "Segoe UI",
-    Arial,
-    sans-serif;
-
+    font-family:"Segoe UI",Arial,sans-serif;
     background:
-
-    radial-gradient(
-        circle at 10% 10%,
-        rgba(255,47,167,.14),
-        transparent 25%
-    ),
-
-    radial-gradient(
-        circle at 90% 20%,
-        rgba(139,53,255,.16),
-        transparent 28%
-    ),
-
-    radial-gradient(
-        circle at 50% 90%,
-        rgba(255,47,167,.08),
-        transparent 30%
-    ),
-
+    radial-gradient(circle at 10% 10%,rgba(255,47,167,.14),transparent 25%),
+    radial-gradient(circle at 90% 20%,rgba(139,53,255,.16),transparent 28%),
+    radial-gradient(circle at 50% 90%,rgba(255,47,167,.08),transparent 30%),
     var(--dark);
-
     color:var(--text);
-
     overflow-x:hidden;
 }
 
-
-/* =========================================================
-   TECHNOLOGY GRID
-========================================================= */
-
+/* TECHNOLOGY GRID */
 body::before{
-
-    content:"";
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:-3;
-
-    pointer-events:none;
-
+    content:""; position:fixed; inset:0; z-index:-3; pointer-events:none;
     background-image:
-
-    linear-gradient(
-        rgba(255,255,255,.025) 1px,
-        transparent 1px
-    ),
-
-    linear-gradient(
-        90deg,
-        rgba(255,255,255,.025) 1px,
-        transparent 1px
-    );
-
+    linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
     background-size:50px 50px;
-
-    mask-image:
-    linear-gradient(
-        to bottom,
-        black,
-        transparent 90%
-    );
+    mask-image:linear-gradient(to bottom,black,transparent 90%);
 }
 
-
-/* =========================================================
-   FLOATING LIGHTS
-========================================================= */
-
+/* FLOATING LIGHTS */
 body::after{
-
-    content:"";
-
-    position:fixed;
-
-    width:500px;
-    height:500px;
-
-    border-radius:50%;
-
-    top:30%;
-    left:50%;
-
-    transform:translate(-50%,-50%);
-
-    background:
-    radial-gradient(
-        circle,
-        rgba(255,47,167,.055),
-        transparent 70%
-    );
-
-    z-index:-2;
-
-    pointer-events:none;
-
+    content:""; position:fixed; width:500px; height:500px; border-radius:50%;
+    top:30%; left:50%; transform:translate(-50%,-50%);
+    background:radial-gradient(circle,rgba(255,47,167,.055),transparent 70%);
+    z-index:-2; pointer-events:none;
 }
 
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
+/* NAVIGATION */
 nav{
-
-    position:sticky;
-
-    top:0;
-
-    z-index:9999;
-
-    background:
-    rgba(9,6,17,.78);
-
-    backdrop-filter:
-    blur(20px);
-
-    border-bottom:
-    1px solid rgba(255,47,167,.18);
-
-    box-shadow:
-    0 10px 40px rgba(0,0,0,.35);
-
+    position:sticky; top:0; z-index:9999;
+    background:rgba(9,6,17,.78); backdrop-filter:blur(20px);
+    border-bottom:1px solid rgba(255,47,167,.18);
+    box-shadow:0 10px 40px rgba(0,0,0,.35);
 }
-
-
 .nav-container{
-
-    width:92%;
-
-    max-width:1250px;
-
-    min-height:76px;
-
-    margin:auto;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:space-between;
-
+    width:92%; max-width:1250px; min-height:76px; margin:auto;
+    display:flex; align-items:center; justify-content:space-between;
 }
-
-
 .logo{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    font-size:16px;
-
-    font-weight:900;
-
-    letter-spacing:1.5px;
-
-    white-space:nowrap;
-
+    display:flex; align-items:center; gap:12px;
+    font-size:16px; font-weight:900; letter-spacing:1.5px; white-space:nowrap;
 }
-
-
 .logo-icon{
-
-    width:43px;
-    height:43px;
-
-    display:flex;
-
-    align-items:center;
-    justify-content:center;
-
-    border-radius:13px;
-
-    background:
-    linear-gradient(
-        135deg,
-        var(--pink),
-        var(--purple)
-    );
-
-    color:white;
-
-    font-size:20px;
-
-    box-shadow:
-
-    0 0 20px
-    rgba(255,47,167,.45),
-
-    inset 0 0 15px
-    rgba(255,255,255,.15);
-
+    width:43px; height:43px; display:flex; align-items:center; justify-content:center;
+    border-radius:13px; background:linear-gradient(135deg,var(--pink),var(--purple));
+    color:white; font-size:20px;
+    box-shadow:0 0 20px rgba(255,47,167,.45), inset 0 0 15px rgba(255,255,255,.15);
 }
-
-
-.nav-links{
-
-    display:flex;
-
-    gap:30px;
-
-    list-style:none;
-
-}
-
-
+.nav-links{ display:flex; gap:30px; list-style:none; }
 .nav-links a{
-
-    position:relative;
-
-    color:#b9a9c5;
-
-    text-decoration:none;
-
-    font-size:13px;
-
-    font-weight:700;
-
-    transition:.3s;
-
+    position:relative; color:#b9a9c5; text-decoration:none;
+    font-size:13px; font-weight:700; transition:.3s;
 }
-
-
-.nav-links a:hover{
-
-    color:white;
-
-}
-
-
+.nav-links a:hover{ color:white; }
 .nav-links a::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:5px;
-    height:5px;
-
-    border-radius:50%;
-
-    background:var(--pink);
-
-    left:50%;
-    bottom:-13px;
-
-    transform:
-    translateX(-50%)
-    scale(0);
-
-    box-shadow:
-    0 0 10px var(--pink);
-
-    transition:.3s;
-
+    content:""; position:absolute; width:5px; height:5px; border-radius:50%;
+    background:var(--pink); left:50%; bottom:-13px;
+    transform:translateX(-50%) scale(0);
+    box-shadow:0 0 10px var(--pink); transition:.3s;
 }
+.nav-links a:hover::before{ transform:translateX(-50%) scale(1); }
 
-
-.nav-links a:hover::before{
-
-    transform:
-    translateX(-50%)
-    scale(1);
-
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
+/* HERO */
 .hero{
-
-    position:relative;
-
-    min-height:650px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    text-align:center;
-
-    overflow:hidden;
-
-    padding:100px 20px;
-
+    position:relative; min-height:650px; display:flex; align-items:center; justify-content:center;
+    text-align:center; overflow:hidden; padding:100px 20px;
     background:
-
-    radial-gradient(
-        circle at center,
-        rgba(255,47,167,.14),
-        transparent 38%
-    ),
-
-    linear-gradient(
-        135deg,
-        #0b0612,
-        #1b0827,
-        #0b0612
-    );
-
-    border-bottom:
-    1px solid rgba(255,47,167,.15);
-
+    radial-gradient(circle at center,rgba(255,47,167,.14),transparent 38%),
+    linear-gradient(135deg,#0b0612,#1b0827,#0b0612);
+    border-bottom:1px solid rgba(255,47,167,.15);
 }
-
-
-/* cyber circles */
-
 .hero .circle1{
-
-    position:absolute;
-
-    width:650px;
-    height:650px;
-
-    border-radius:50%;
-
-    border:
-    1px solid rgba(255,47,167,.12);
-
-    top:-330px;
-    right:-200px;
-
+    position:absolute; width:650px; height:650px; border-radius:50%;
+    border:1px solid rgba(255,47,167,.12); top:-330px; right:-200px;
 }
-
-
 .hero .circle2{
-
-    position:absolute;
-
-    width:500px;
-    height:500px;
-
-    border-radius:50%;
-
-    border:
-    1px solid rgba(139,53,255,.15);
-
-    bottom:-280px;
-    left:-180px;
-
+    position:absolute; width:500px; height:500px; border-radius:50%;
+    border:1px solid rgba(139,53,255,.15); bottom:-280px; left:-180px;
 }
-
-
-/* diagonal technology lines */
-
 .hero .tech-line{
-
-    position:absolute;
-
-    width:250px;
-
-    height:1px;
-
-    background:
-    linear-gradient(
-        90deg,
-        transparent,
-        var(--pink),
-        transparent
-    );
-
-    opacity:.3;
-
+    position:absolute; width:250px; height:1px;
+    background:linear-gradient(90deg,transparent,var(--pink),transparent); opacity:.3;
 }
+.line1{ top:25%; left:0; }
+.line2{ top:70%; right:0; }
+.line3{ top:40%; right:5%; transform:rotate(90deg); }
 
-
-.line1{
-    top:25%;
-    left:0;
-}
-
-.line2{
-    top:70%;
-    right:0;
-}
-
-.line3{
-    top:40%;
-    right:5%;
-
-    transform:rotate(90deg);
-}
-
-
-/* hero content */
-
-.hero-content{
-
-    position:relative;
-
-    z-index:5;
-
-    max-width:900px;
-
-    animation:
-    heroIn 1s ease;
-
-}
-
-
+.hero-content{ position:relative; z-index:5; max-width:900px; animation:heroIn 1s ease; }
 @keyframes heroIn{
-
-    from{
-        opacity:0;
-        transform:
-        translateY(35px);
-    }
-
-    to{
-        opacity:1;
-        transform:
-        translateY(0);
-    }
-
+    from{ opacity:0; transform:translateY(35px); }
+    to{ opacity:1; transform:translateY(0); }
 }
-
-
 .status{
-
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:9px;
-
-    padding:9px 17px;
-
-    margin-bottom:27px;
-
-    border:
-    1px solid rgba(255,47,167,.30);
-
-    border-radius:50px;
-
-    background:
-    rgba(255,47,167,.06);
-
-    color:#ff72c7;
-
-    font-size:10px;
-
-    font-weight:800;
-
-    letter-spacing:2.5px;
-
+    display:inline-flex; align-items:center; gap:9px; padding:9px 17px; margin-bottom:27px;
+    border:1px solid rgba(255,47,167,.30); border-radius:50px;
+    background:rgba(255,47,167,.06); color:#ff72c7;
+    font-size:10px; font-weight:800; letter-spacing:2.5px;
 }
-
-
 .status-dot{
-
-    width:7px;
-    height:7px;
-
-    border-radius:50%;
-
-    background:var(--pink);
-
-    box-shadow:
-    0 0 12px var(--pink);
-
-    animation:
-    blink 1.5s infinite;
-
+    width:7px; height:7px; border-radius:50%; background:var(--pink);
+    box-shadow:0 0 12px var(--pink); animation:blink 1.5s infinite;
 }
-
-
-@keyframes blink{
-
-    0%,100%{
-        opacity:1;
-    }
-
-    50%{
-        opacity:.35;
-    }
-
-}
-
+@keyframes blink{ 0%,100%{ opacity:1; } 50%{ opacity:.35; } }
 
 .hero h1{
-
-    font-size:
-    clamp(52px,8vw,94px);
-
-    line-height:.95;
-
-    letter-spacing:-5px;
-
-    margin-bottom:28px;
-
-    color:white;
-
-    text-shadow:
-    0 0 40px
-    rgba(255,47,167,.15);
-
+    font-size:clamp(52px,8vw,94px); line-height:.95; letter-spacing:-5px;
+    margin-bottom:28px; color:white; text-shadow:0 0 40px rgba(255,47,167,.15);
 }
-
-
 .hero h1 span{
-
-    background:
-
-    linear-gradient(
-        90deg,
-        #ff3eac,
-        #ff75c7,
-        #a957ff,
-        #d06cff
-    );
-
-    -webkit-background-clip:text;
-
-    -webkit-text-fill-color:transparent;
-
+    background:linear-gradient(90deg,#ff3eac,#ff75c7,#a957ff,#d06cff);
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
 }
-
-
-.hero-description{
-
-    max-width:700px;
-
-    margin:auto;
-
-    color:#aa9caf;
-
-    font-size:16px;
-
-    line-height:1.9;
-
-}
-
-
-.hero-tags{
-
-    display:flex;
-
-    justify-content:center;
-
-    flex-wrap:wrap;
-
-    gap:12px;
-
-    margin-top:38px;
-
-}
-
-
+.hero-description{ max-width:700px; margin:auto; color:#aa9caf; font-size:16px; line-height:1.9; }
+.hero-tags{ display:flex; justify-content:center; flex-wrap:wrap; gap:12px; margin-top:38px; }
 .hero-tag{
-
-    padding:11px 17px;
-
-    border-radius:10px;
-
-    background:
-    rgba(255,255,255,.035);
-
-    border:
-    1px solid rgba(255,255,255,.09);
-
-    color:#cfc0d9;
-
-    font-size:11px;
-
-    font-weight:700;
-
-    transition:.3s;
-
+    padding:11px 17px; border-radius:10px; background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.09); color:#cfc0d9;
+    font-size:11px; font-weight:700; transition:.3s;
 }
-
-
 .hero-tag:hover{
-
-    transform:
-    translateY(-4px);
-
-    border-color:
-    rgba(255,47,167,.4);
-
-    box-shadow:
-    0 0 25px
-    rgba(255,47,167,.12);
-
+    transform:translateY(-4px); border-color:rgba(255,47,167,.4);
+    box-shadow:0 0 25px rgba(255,47,167,.12);
 }
 
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
+/* SEARCH */
 .search-wrapper{
-
-    position:relative;
-
-    z-index:20;
-
-    width:100%;
-
-    max-width:800px;
-
-    margin:-38px auto 90px;
-
-    padding:0 20px;
-
+    position:relative; z-index:20; width:100%; max-width:800px;
+    margin:-38px auto 90px; padding:0 20px;
 }
-
-
 .search-box{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:14px;
-
-    padding:18px 21px;
-
-    background:
-    rgba(23,16,33,.90);
-
-    backdrop-filter:
-    blur(25px);
-
-    border:
-    1px solid rgba(255,47,167,.20);
-
-    border-radius:18px;
-
-    box-shadow:
-
-    0 25px 70px
-    rgba(0,0,0,.4),
-
-    0 0 35px
-    rgba(255,47,167,.05);
-
+    display:flex; align-items:center; gap:14px; padding:18px 21px;
+    background:rgba(23,16,33,.90); backdrop-filter:blur(25px);
+    border:1px solid rgba(255,47,167,.20); border-radius:18px;
+    box-shadow:0 25px 70px rgba(0,0,0,.4), 0 0 35px rgba(255,47,167,.05);
     transition:.3s;
-
 }
-
-
 .search-box:focus-within{
-
-    border-color:
-    rgba(255,47,167,.55);
-
-    box-shadow:
-
-    0 25px 70px
-    rgba(0,0,0,.45),
-
-    0 0 35px
-    rgba(255,47,167,.12);
-
+    border-color:rgba(255,47,167,.55);
+    box-shadow:0 25px 70px rgba(0,0,0,.45), 0 0 35px rgba(255,47,167,.12);
 }
-
-
-.search-icon{
-
-    font-size:19px;
-
-    color:#ff5ab8;
-
-}
-
-
+.search-icon{ font-size:19px; color:#ff5ab8; }
 .search-box input{
-
-    width:100%;
-
-    border:none;
-
-    outline:none;
-
-    background:transparent;
-
-    color:white;
-
-    font-size:14px;
-
+    width:100%; border:none; outline:none; background:transparent; color:white; font-size:14px;
 }
+.search-box input::placeholder{ color:#76667f; }
+.search-count{ white-space:nowrap; color:#816f8d; font-size:10px; font-weight:800; }
 
+/* MAIN */
+main{ width:92%; max-width:1200px; margin:auto; }
+section{ margin-bottom:125px; scroll-margin-top:100px; }
 
-.search-box input::placeholder{
-
-    color:#76667f;
-
-}
-
-
-.search-count{
-
-    white-space:nowrap;
-
-    color:#816f8d;
-
-    font-size:10px;
-
-    font-weight:800;
-
-}
-
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-main{
-
-    width:92%;
-
-    max-width:1200px;
-
-    margin:auto;
-
-}
-
-
-section{
-
-    margin-bottom:125px;
-
-    scroll-margin-top:100px;
-
-}
-
-
-/* =========================================================
-   SECTION HEADER
-========================================================= */
-
-.section-heading{
-
-    text-align:center;
-
-    margin-bottom:52px;
-
-}
-
-
+/* SECTION HEADER */
+.section-heading{ text-align:center; margin-bottom:52px; }
 .section-number{
-
-    display:inline-block;
-
-    width:55px;
-    height:3px;
-
-    margin-bottom:17px;
-
-    border-radius:20px;
-
-    background:
-
-    linear-gradient(
-        90deg,
-        var(--pink),
-        var(--purple)
-    );
-
-    box-shadow:
-    0 0 15px
-    rgba(255,47,167,.5);
-
+    display:inline-block; width:55px; height:3px; margin-bottom:17px; border-radius:20px;
+    background:linear-gradient(90deg,var(--pink),var(--purple));
+    box-shadow:0 0 15px rgba(255,47,167,.5);
 }
+.section-heading h2{ font-size:38px; color:white; letter-spacing:-1px; margin-bottom:11px; }
+.section-heading p{ color:#8f819b; font-size:13px; }
 
-
-.section-heading h2{
-
-    font-size:38px;
-
-    color:white;
-
-    letter-spacing:-1px;
-
-    margin-bottom:11px;
-
-}
-
-
-.section-heading p{
-
-    color:#8f819b;
-
-    font-size:13px;
-
-}
-
-
-/* =========================================================
-   FEATURE PRESIDENT
-========================================================= */
-
+/* FEATURE PRESIDENT */
 .feature-card{
-
-    position:relative;
-
-    max-width:980px;
-
-    min-height:410px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:370px 1fr;
-
-    overflow:hidden;
-
-    border-radius:30px;
-
-    background:
-
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.065),
-        rgba(255,255,255,.018)
-    );
-
-    border:
-    1px solid rgba(255,47,167,.20);
-
-    box-shadow:
-
-    0 35px 90px
-    rgba(0,0,0,.4);
-
-    transition:.45s;
-
+    position:relative; max-width:980px; min-height:410px; margin:auto;
+    display:grid; grid-template-columns:370px 1fr; overflow:hidden; border-radius:30px;
+    background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.018));
+    border:1px solid rgba(255,47,167,.20);
+    box-shadow:0 35px 90px rgba(0,0,0,.4); transition:.45s;
 }
-
-
 .feature-card:hover{
-
-    transform:
-    translateY(-8px);
-
-    border-color:
-    rgba(255,47,167,.42);
-
-    box-shadow:
-
-    0 40px 100px
-    rgba(0,0,0,.45),
-
-    0 0 50px
-    rgba(255,47,167,.08);
-
+    transform:translateY(-8px); border-color:rgba(255,47,167,.42);
+    box-shadow:0 40px 100px rgba(0,0,0,.45), 0 0 50px rgba(255,47,167,.08);
 }
-
-
-/* left image */
-
 .feature-photo{
-
-    position:relative;
-
-    min-height:410px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
+    position:relative; min-height:410px; display:flex; align-items:center; justify-content:center;
     background:
-
-    radial-gradient(
-        circle,
-        rgba(255,47,167,.25),
-        transparent 55%
-    ),
-
-    linear-gradient(
-        145deg,
-        #38104d,
-        #11091c
-    );
-
+    radial-gradient(circle,rgba(255,47,167,.25),transparent 55%),
+    linear-gradient(145deg,#38104d,#11091c);
 }
-
-
 .feature-photo::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:260px;
-    height:260px;
-
-    border-radius:50%;
-
-    border:
-    1px solid rgba(255,47,167,.35);
-
-    box-shadow:
-
-    0 0 60px
-    rgba(255,47,167,.10);
-
+    content:""; position:absolute; width:260px; height:260px; border-radius:50%;
+    border:1px solid rgba(255,47,167,.35); box-shadow:0 0 60px rgba(255,47,167,.10);
 }
-
-
 .feature-photo::after{
-
-    position:absolute;
-
-    bottom:25px;
-
-    left:30px;
-
-    padding:7px 13px;
-
-    border-radius:8px;
-
-    background:
-    rgba(0,0,0,.35);
-
-    border:
-    1px solid rgba(255,255,255,.10);
-
-    color:#ff70c5;
-
-    font-size:9px;
-
-    font-weight:900;
-
-    letter-spacing:2px;
-
+    position:absolute; bottom:25px; left:30px; padding:7px 13px; border-radius:8px;
+    background:rgba(0,0,0,.35); border:1px solid rgba(255,255,255,.10);
+    color:#ff70c5; font-size:9px; font-weight:900; letter-spacing:2px;
 }
-
-
 .feature-photo img{
-
-    position:relative;
-
-    z-index:2;
-
-    width:220px;
-    height:260px;
-
-    object-fit:cover;
-
-    border-radius:25px;
-
-    border:
-    5px solid rgba(255,255,255,.9);
-
-    box-shadow:
-
-    0 25px 55px
-    rgba(0,0,0,.45),
-
-    0 0 30px
-    rgba(255,47,167,.12);
-
+    position:relative; z-index:2; width:220px; height:260px; object-fit:cover;
+    border-radius:25px; border:5px solid rgba(255,255,255,.9);
+    box-shadow:0 25px 55px rgba(0,0,0,.45), 0 0 30px rgba(255,47,167,.12);
 }
-
-
-/* content */
-
-.feature-content{
-
-    padding:60px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    justify-content:center;
-
-}
-
-
-.feature-label{
-
-    color:#ff54b5;
-
-    font-size:10px;
-
-    font-weight:900;
-
-    letter-spacing:3px;
-
-}
-
-
-.feature-content h3{
-
-    font-size:31px;
-
-    line-height:1.25;
-
-    margin-top:15px;
-
-    color:white;
-
-}
-
-
+.feature-content{ padding:60px; display:flex; flex-direction:column; justify-content:center; }
+.feature-label{ color:#ff54b5; font-size:10px; font-weight:900; letter-spacing:3px; }
+.feature-content h3{ font-size:31px; line-height:1.25; margin-top:15px; color:white; }
 .feature-position{
-
-    width:max-content;
-
-    margin-top:17px;
-
-    padding:8px 15px;
-
-    border-radius:8px;
-
-    background:
-    rgba(255,47,167,.08);
-
-    border:
-    1px solid rgba(255,47,167,.25);
-
-    color:#ff67bc;
-
-    font-size:11px;
-
-    font-weight:800;
-
+    width:max-content; margin-top:17px; padding:8px 15px; border-radius:8px;
+    background:rgba(255,47,167,.08); border:1px solid rgba(255,47,167,.25);
+    color:#ff67bc; font-size:11px; font-weight:800;
 }
+.feature-content p{ margin-top:25px; color:#96879f; font-size:13px; line-height:1.9; }
 
-
-.feature-content p{
-
-    margin-top:25px;
-
-    color:#96879f;
-
-    font-size:13px;
-
-    line-height:1.9;
-
-}
-
-
-/* =========================================================
-   CARDS
-========================================================= */
-
-.officials{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    justify-content:center;
-
-    gap:25px;
-
-}
-
-
+/* CARDS */
+.officials{ display:flex; flex-wrap:wrap; justify-content:center; gap:25px; }
 .card{
-
-    position:relative;
-
-    width:260px;
-
-    min-height:355px;
-
-    padding:28px 22px;
-
-    text-align:center;
-
-    overflow:hidden;
-
-    border-radius:23px;
-
-    background:
-
-    linear-gradient(
-        145deg,
-        rgba(255,255,255,.055),
-        rgba(255,255,255,.018)
-    );
-
-    border:
-    1px solid rgba(255,255,255,.08);
-
-    box-shadow:
-
-    0 15px 45px
-    rgba(0,0,0,.22);
-
-    transition:.45s;
-
+    position:relative; width:260px; min-height:355px; padding:28px 22px; text-align:center;
+    overflow:hidden; border-radius:23px;
+    background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:0 15px 45px rgba(0,0,0,.22); transition:.45s;
 }
-
-
-/* top neon border */
-
 .card::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-
-    left:15%;
-
-    width:70%;
-
-    height:2px;
-
-    background:
-
-    linear-gradient(
-        90deg,
-        transparent,
-        var(--pink),
-        var(--purple),
-        transparent
-    );
-
-    box-shadow:
-    0 0 15px
-    rgba(255,47,167,.4);
-
+    content:""; position:absolute; top:0; left:15%; width:70%; height:2px;
+    background:linear-gradient(90deg,transparent,var(--pink),var(--purple),transparent);
+    box-shadow:0 0 15px rgba(255,47,167,.4);
 }
-
-
-/* corner glow */
-
 .card::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:160px;
-    height:160px;
-
-    right:-100px;
-    bottom:-100px;
-
-    border-radius:50%;
-
-    background:
-    radial-gradient(
-        circle,
-        rgba(139,53,255,.22),
-        transparent 70%
-    );
-
+    content:""; position:absolute; width:160px; height:160px; right:-100px; bottom:-100px;
+    border-radius:50%; background:radial-gradient(circle,rgba(139,53,255,.22),transparent 70%);
     transition:.5s;
-
 }
-
-
 .card:hover{
-
-    transform:
-    translateY(-12px);
-
-    border-color:
-    rgba(255,47,167,.35);
-
-    box-shadow:
-
-    0 30px 70px
-    rgba(0,0,0,.38),
-
-    0 0 35px
-    rgba(255,47,167,.08);
-
+    transform:translateY(-12px); border-color:rgba(255,47,167,.35);
+    box-shadow:0 30px 70px rgba(0,0,0,.38), 0 0 35px rgba(255,47,167,.08);
 }
-
-
-.card:hover::after{
-
-    transform:
-    scale(1.5);
-
-}
-
-
-/* profile image */
-
+.card:hover::after{ transform:scale(1.5); }
 .card img{
-
-    position:relative;
-
-    z-index:3;
-
-    width:150px;
-    height:165px;
-
-    object-fit:cover;
-
-    border-radius:20px;
-
-    border:
-    4px solid rgba(255,255,255,.9);
-
-    background:#24142f;
-
-    box-shadow:
-
-    0 15px 35px
-    rgba(0,0,0,.35);
-
-    transition:.45s;
-
+    position:relative; z-index:3; width:150px; height:165px; object-fit:cover;
+    border-radius:20px; border:4px solid rgba(255,255,255,.9); background:#24142f;
+    box-shadow:0 15px 35px rgba(0,0,0,.35); transition:.45s;
 }
-
-
-.card:hover img{
-
-    transform:
-    scale(1.06);
-
-    box-shadow:
-
-    0 15px 35px
-    rgba(255,47,167,.16);
-
-}
-
-
+.card:hover img{ transform:scale(1.06); box-shadow:0 15px 35px rgba(255,47,167,.16); }
 .card h3{
-
-    position:relative;
-
-    z-index:3;
-
-    margin-top:20px;
-
-    color:#f9f1ff;
-
-    font-size:16px;
-
-    line-height:1.4;
-
+    position:relative; z-index:3; margin-top:20px; color:#f9f1ff; font-size:16px; line-height:1.4;
 }
-
-
 .position{
-
-    position:relative;
-
-    z-index:3;
-
-    display:inline-block;
-
-    margin-top:10px;
-
-    padding:7px 14px;
-
-    border-radius:7px;
-
-    background:
-    rgba(255,47,167,.08);
-
-    border:
-    1px solid rgba(255,47,167,.20);
-
-    color:#ff66bb;
-
-    font-size:9px;
-
-    font-weight:900;
-
-    letter-spacing:.8px;
-
+    position:relative; z-index:3; display:inline-block; margin-top:10px; padding:7px 14px;
+    border-radius:7px; background:rgba(255,47,167,.08); border:1px solid rgba(255,47,167,.20);
+    color:#ff66bb; font-size:9px; font-weight:900; letter-spacing:.8px;
 }
+.department{ position:relative; z-index:3; margin-top:15px; color:#94849f; font-size:11px; line-height:1.6; }
 
-
-.department{
-
-    position:relative;
-
-    z-index:3;
-
-    margin-top:15px;
-
-    color:#94849f;
-
-    font-size:11px;
-
-    line-height:1.6;
-
-}
-
-
-/* =========================================================
-   SPECIAL CARD SIZES
-========================================================= */
-
-.campus-card{
-
-    width:285px;
-
-}
-
-
-.dean-card{
-
-    width:255px;
-
-    min-height:375px;
-
-}
-
-
-.dean-card img{
-
-    width:145px;
-    height:155px;
-
-}
-
-
+/* SPECIAL CARD SIZES */
+.campus-card{ width:285px; }
+.dean-card{ width:255px; min-height:375px; }
+.dean-card img{ width:145px; height:155px; }
 .dean-number{
+    position:relative; z-index:3; display:block; margin-bottom:10px;
+    color:#796b84; font-size:9px; font-weight:900; letter-spacing:3px;
+}
+.person-card{ width:250px; min-height:335px; }
+.person-card img{ width:140px; height:150px; }
 
-    position:relative;
-
-    z-index:3;
-
-    display:block;
-
-    margin-bottom:10px;
-
-    color:#796b84;
-
-    font-size:9px;
-
-    font-weight:900;
-
-    letter-spacing:3px;
-
+/* ACQUAINTANCE PARTY GALLERY */
+.gallery{ display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; }
+.gallery img{
+    width:100%; height:260px; object-fit:cover; cursor:pointer; border-radius:20px;
+    border:3px solid rgba(255,255,255,.9); background:#24142f;
+    box-shadow:0 15px 35px rgba(0,0,0,.35); transition:.4s;
+}
+.gallery img:hover{
+    transform:translateY(-8px) scale(1.02); border-color:var(--pink);
+    box-shadow:0 20px 45px rgba(255,47,167,.25);
+}
+.viewer{
+    position:fixed; inset:0; z-index:99999; display:none; align-items:center; justify-content:center;
+    background:rgba(9,6,17,.92); cursor:pointer;
+}
+.viewer.show{ display:flex; }
+.viewer img{
+    max-width:90%; max-height:90%; border-radius:15px; border:4px solid white;
+    box-shadow:0 0 60px rgba(255,47,167,.3);
 }
 
+/* EMPTY SEARCH */
+.no-results{ display:none; text-align:center; padding:35px; margin-bottom:70px; color:#8f819b; font-size:13px; }
+.no-results strong{ display:block; color:#ff63ba; margin-bottom:7px; }
 
-.person-card{
-
-    width:250px;
-
-    min-height:335px;
-
-}
-
-
-.person-card img{
-
-    width:140px;
-    height:150px;
-
-}
-
-
-/* =========================================================
-   EMPTY SEARCH
-========================================================= */
-
-.no-results{
-
-    display:none;
-
-    text-align:center;
-
-    padding:35px;
-
-    margin-bottom:70px;
-
-    color:#8f819b;
-
-    font-size:13px;
-
-}
-
-
-.no-results strong{
-
-    display:block;
-
-    color:#ff63ba;
-
-    margin-bottom:7px;
-
-}
-
-
-/* =========================================================
-   BACK TO TOP
-========================================================= */
-
+/* BACK TO TOP */
 #topButton{
-
-    position:fixed;
-
-    right:25px;
-    bottom:25px;
-
-    width:45px;
-    height:45px;
-
-    border:none;
-
-    border-radius:13px;
-
-    cursor:pointer;
-
-    color:white;
-
-    background:
-    linear-gradient(
-        135deg,
-        var(--pink),
-        var(--purple)
-    );
-
-    box-shadow:
-    0 0 25px
-    rgba(255,47,167,.25);
-
-    font-size:18px;
-
-    opacity:0;
-
-    pointer-events:none;
-
-    transition:.3s;
-
-    z-index:999;
-
+    position:fixed; right:25px; bottom:25px; width:45px; height:45px; border:none;
+    border-radius:13px; cursor:pointer; color:white;
+    background:linear-gradient(135deg,var(--pink),var(--purple));
+    box-shadow:0 0 25px rgba(255,47,167,.25); font-size:18px;
+    opacity:0; pointer-events:none; transition:.3s; z-index:999;
 }
+#topButton.show{ opacity:1; pointer-events:auto; }
+#topButton:hover{ transform:translateY(-5px); box-shadow:0 0 35px rgba(255,47,167,.45); }
 
-
-#topButton.show{
-
-    opacity:1;
-
-    pointer-events:auto;
-
-}
-
-
-#topButton:hover{
-
-    transform:
-    translateY(-5px);
-
-    box-shadow:
-    0 0 35px
-    rgba(255,47,167,.45);
-
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
+/* FOOTER */
 footer{
-
-    position:relative;
-
-    overflow:hidden;
-
-    margin-top:100px;
-
-    padding:70px 20px;
-
-    text-align:center;
-
-    background:
-
-    linear-gradient(
-        135deg,
-        #170920,
-        #08050e
-    );
-
-    border-top:
-    1px solid rgba(255,47,167,.16);
-
+    position:relative; overflow:hidden; margin-top:100px; padding:70px 20px; text-align:center;
+    background:linear-gradient(135deg,#170920,#08050e);
+    border-top:1px solid rgba(255,47,167,.16);
 }
-
-
-.footer-grid{
-
-    position:relative;
-
-    z-index:2;
-
-}
-
-
+.footer-grid{ position:relative; z-index:2; }
 .footer-logo{
-
-    font-size:24px;
-
-    font-weight:900;
-
-    margin-bottom:14px;
-
-    background:
-
-    linear-gradient(
-        90deg,
-        var(--pink2),
-        var(--purple2)
-    );
-
-    -webkit-background-clip:text;
-
-    -webkit-text-fill-color:transparent;
-
+    font-size:24px; font-weight:900; margin-bottom:14px;
+    background:linear-gradient(90deg,var(--pink2),var(--purple2));
+    -webkit-background-clip:text; -webkit-text-fill-color:transparent;
 }
-
-
-.footer-line{
-
-    width:80px;
-
-    height:2px;
-
-    margin:15px auto;
-
-    background:
-
-    linear-gradient(
-        90deg,
-        var(--pink),
-        var(--purple)
-    );
-
-}
-
-
-footer p{
-
-    color:#75677f;
-
-    font-size:11px;
-
-    margin:7px;
-
-}
-
-
-.footer-tech{
-
-    margin-top:25px;
-
-    color:#4f4358;
-
-    font-size:9px;
-
-    letter-spacing:3px;
-
-    font-weight:800;
-
-}
-
-
-/* footer glow */
-
+.footer-line{ width:80px; height:2px; margin:15px auto; background:linear-gradient(90deg,var(--pink),var(--purple)); }
+footer p{ color:#75677f; font-size:11px; margin:7px; }
+.footer-tech{ margin-top:25px; color:#4f4358; font-size:9px; letter-spacing:3px; font-weight:800; }
 footer::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:400px;
-    height:400px;
-
-    border-radius:50%;
-
-    top:-300px;
-    left:-100px;
-
-    background:
-    radial-gradient(
-        circle,
-        rgba(255,47,167,.15),
-        transparent 70%
-    );
-
+    content:""; position:absolute; width:400px; height:400px; border-radius:50%;
+    top:-300px; left:-100px; background:radial-gradient(circle,rgba(255,47,167,.15),transparent 70%);
 }
-
-
 footer::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:400px;
-    height:400px;
-
-    border-radius:50%;
-
-    bottom:-300px;
-    right:-100px;
-
-    background:
-    radial-gradient(
-        circle,
-        rgba(139,53,255,.15),
-        transparent 70%
-    );
-
+    content:""; position:absolute; width:400px; height:400px; border-radius:50%;
+    bottom:-300px; right:-100px; background:radial-gradient(circle,rgba(139,53,255,.15),transparent 70%);
 }
 
+/* SCROLL REVEAL */
+.reveal{ opacity:0; transform:translateY(30px); transition:opacity .8s ease, transform .8s ease; }
+.reveal.visible{ opacity:1; transform:translateY(0); }
 
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
+/* UNIQUE ENHANCEMENTS */
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:100000;background:linear-gradient(90deg,var(--pink),var(--purple));box-shadow:0 0 12px var(--pink);}
+#glow{position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:-1;left:50%;top:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,47,167,.14),transparent 65%);transition:left .18s ease-out,top .18s ease-out;}
+#particles{position:fixed;inset:0;z-index:-1;pointer-events:none;}
+.hero h1 span{background-size:300% 100%;animation:shift 6s linear infinite;}
+@keyframes shift{to{background-position:300% 0;}}
+.typed{border-right:3px solid var(--pink);padding-right:5px;animation:shift 6s linear infinite,caret .8s step-end infinite !important;}
+@keyframes caret{50%{border-right-color:transparent;}}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px;max-width:900px;margin:0 auto 120px;}
+.stat{text-align:center;padding:28px 10px;border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.015));border:1px solid rgba(255,47,167,.18);transition:.4s;}
+.stat:hover{transform:translateY(-8px);border-color:rgba(255,47,167,.45);box-shadow:0 0 35px rgba(255,47,167,.12);}
+.stat b{display:block;font-size:44px;font-weight:900;background:linear-gradient(90deg,var(--pink2),var(--purple2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.stat small{color:#8f819b;font-size:10px;font-weight:800;letter-spacing:2.5px;}
+.section-heading h2{background:linear-gradient(90deg,#fff,#ffb3e0);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
 
-.reveal{
-
-    opacity:0;
-
-    transform:
-    translateY(30px);
-
-    transition:
-    opacity .8s ease,
-    transform .8s ease;
-
+/* MORE IMPROVEMENTS */
+.searchable{cursor:pointer;}
+.nav-links a.active{color:white;}
+.nav-links a.active::before{transform:translateX(-50%) scale(1);}
+#menuBtn{display:none;width:44px;height:44px;border:1px solid rgba(255,47,167,.3);border-radius:12px;background:rgba(255,47,167,.08);color:white;font-size:20px;cursor:pointer;}
+@media(max-width:1099px){
+    nav .nav-links{display:none;}
+    #menuBtn{display:block;}
+    nav .nav-container{justify-content:space-between;}
+    nav .nav-links.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;text-align:center;background:rgba(9,6,17,.97);border-bottom:1px solid rgba(255,47,167,.2);padding:8px 0;}
+    nav .nav-links.open a{display:block;padding:15px;font-size:14px;}
+    nav .nav-links.open a::before{display:none;}
 }
+.modal{position:fixed;inset:0;z-index:99998;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(9,6,17,.85);backdrop-filter:blur(8px);}
+.modal.show{display:flex;animation:heroIn .4s ease;}
+.modal-box{position:relative;width:100%;max-width:380px;padding:40px 30px 35px;text-align:center;border-radius:28px;background:linear-gradient(145deg,#25103a,#120a1d);border:1px solid rgba(255,47,167,.35);box-shadow:0 0 80px rgba(255,47,167,.18);}
+.modal-box img{width:190px;height:215px;object-fit:cover;border-radius:24px;border:5px solid rgba(255,255,255,.92);box-shadow:0 20px 50px rgba(0,0,0,.5),0 0 40px rgba(255,47,167,.2);}
+.modal-box h3{margin-top:22px;font-size:22px;color:white;line-height:1.3;}
+.modal-box .position{margin-top:12px;font-size:10px;}
+.modal-box p{margin-top:14px;color:#a998b5;font-size:13px;line-height:1.7;}
+.modal-close{position:absolute;top:15px;right:15px;width:36px;height:36px;border:none;border-radius:10px;cursor:pointer;color:white;background:rgba(255,255,255,.08);font-size:14px;}
+.modal-close:hover{background:var(--pink);}
+.viewer::after{content:"← →  navigate   •   Esc  close";position:absolute;bottom:25px;color:#a998b5;font-size:11px;letter-spacing:1px;}
 
-
-.reveal.visible{
-
-    opacity:1;
-
-    transform:
-    translateY(0);
-
+/* CENTERING */
+@media(min-width:1100px){
+    .nav-container{position:relative;}
+    .nav-links{position:absolute;left:50%;transform:translateX(-50%);}
 }
+.gallery{display:flex;flex-wrap:wrap;justify-content:center;}
+.gallery img{width:340px;max-width:100%;flex:0 0 auto;}
+.stats{display:flex;flex-wrap:wrap;justify-content:center;}
+.stat{width:200px;max-width:100%;}
 
+/* PAGES (TAB STYLE) */
+.page{display:none;}
+.page.active{display:block;}
+body.searching .page{display:none;}
+body.searching .page.people{display:block;}
+.nav-links{gap:24px;}
+.logo{cursor:pointer;}
+.page .stats{margin:60px auto 0;}
+.mv-grid,.values{display:flex;flex-wrap:wrap;justify-content:center;gap:25px;}
+.mv-card{width:480px;max-width:100%;padding:44px 36px;text-align:center;border-radius:26px;background:linear-gradient(145deg,rgba(255,255,255,.065),rgba(255,255,255,.018));border:1px solid rgba(255,47,167,.22);box-shadow:0 30px 80px rgba(0,0,0,.35);transition:.4s;}
+.mv-card:hover{transform:translateY(-8px);border-color:rgba(255,47,167,.5);box-shadow:0 35px 90px rgba(0,0,0,.4),0 0 45px rgba(255,47,167,.1);}
+.mv-icon{font-size:40px;}
+.mv-card h3{margin:14px 0 16px;font-size:13px;letter-spacing:5px;color:#ff54b5;}
+.mv-card p{color:#b9a9c5;font-size:15px;line-height:1.9;}
+.value{width:250px;padding:32px 22px;text-align:center;border-radius:22px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.015));border:1px solid rgba(255,255,255,.09);transition:.4s;}
+.value:hover{transform:translateY(-10px);border-color:rgba(255,47,167,.4);box-shadow:0 0 35px rgba(255,47,167,.1);}
+.value b{display:block;font-size:56px;font-weight:900;line-height:1;background:linear-gradient(135deg,var(--pink2),var(--purple2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.value h4{margin:10px 0 10px;color:white;font-size:16px;}
+.value p{color:#94849f;font-size:12px;line-height:1.7;}
 
-/* =========================================================
-   TABLET
-========================================================= */
-
+/* TABLET */
 @media(max-width:850px){
-
-    .nav-container{
-
-        justify-content:center;
-
-    }
-
-
-    .nav-links{
-
-        display:none;
-
-    }
-
-
-    .hero{
-
-        min-height:570px;
-
-    }
-
-
-    .feature-card{
-
-        grid-template-columns:1fr;
-
-        max-width:600px;
-
-    }
-
-
-    .feature-photo{
-
-        min-height:320px;
-
-    }
-
-
-    .feature-content{
-
-        padding:40px 30px;
-
-        text-align:center;
-
-        align-items:center;
-
-    }
-
+    .nav-container{ justify-content:center; }
+    .nav-links{ display:none; }
+    .hero{ min-height:570px; }
+    .feature-card{ grid-template-columns:1fr; max-width:600px; }
+    .feature-photo{ min-height:320px; }
+    .feature-content{ padding:40px 30px; text-align:center; align-items:center; }
 }
 
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
+/* MOBILE */
 @media(max-width:500px){
-
-    .logo{
-
-        font-size:13px;
-
-    }
-
-
-    .logo-icon{
-
-        width:38px;
-        height:38px;
-
-    }
-
-
-    .hero{
-
-        min-height:550px;
-
-        padding:75px 18px;
-
-    }
-
-
-    .hero h1{
-
-        font-size:47px;
-
-        letter-spacing:-3px;
-
-    }
-
-
-    .hero-description{
-
-        font-size:13px;
-
-    }
-
-
-    .hero-tag{
-
-        font-size:9px;
-
-        padding:9px 11px;
-
-    }
-
-
-    .search-wrapper{
-
-        margin-bottom:65px;
-
-    }
-
-
-    .search-count{
-
-        display:none;
-
-    }
-
-
-    .section-heading h2{
-
-        font-size:29px;
-
-    }
-
-
-    .section-heading p{
-
-        font-size:11px;
-
-    }
-
-
-    .feature-card{
-
-        border-radius:22px;
-
-    }
-
-
-    .feature-photo{
-
-        min-height:290px;
-
-    }
-
-
-    .feature-photo img{
-
-        width:175px;
-
-        height:210px;
-
-    }
-
-
-    .feature-content{
-
-        padding:32px 20px;
-
-    }
-
-
-    .feature-content h3{
-
-        font-size:23px;
-
-    }
-
-
-    .card,
-    .dean-card,
-    .person-card,
-    .campus-card{
-
-        width:100%;
-
-        max-width:320px;
-
-    }
-
-
-    #topButton{
-
-        right:18px;
-
-        bottom:18px;
-
-    }
-
+    .logo{ font-size:13px; }
+    .logo-icon{ width:38px; height:38px; }
+    .hero{ min-height:550px; padding:75px 18px; }
+    .hero h1{ font-size:47px; letter-spacing:-3px; }
+    .hero-description{ font-size:13px; }
+    .hero-tag{ font-size:9px; padding:9px 11px; }
+    .search-wrapper{ margin-bottom:65px; }
+    .search-count{ display:none; }
+    .section-heading h2{ font-size:29px; }
+    .section-heading p{ font-size:11px; }
+    .feature-card{ border-radius:22px; }
+    .feature-photo{ min-height:290px; }
+    .feature-photo img{ width:175px; height:210px; }
+    .feature-content{ padding:32px 20px; }
+    .feature-content h3{ font-size:23px; }
+    .card, .dean-card, .person-card, .campus-card{ width:100%; max-width:320px; }
+    #topButton{ right:18px; bottom:18px; }
 }
-
 </style>
-
 </head>
-
 
 <body>
 
+<div id="progress"></div>
+<div id="glow"></div>
+<canvas id="particles"></canvas>
 
-<!-- =========================================================
-     NAVIGATION
-========================================================= -->
-
+<!-- NAVIGATION -->
 <nav>
-
 <div class="nav-container">
 
     <div class="logo">
-
-        <div class="logo-icon">
-            
-        </div>
-
+        <div class="logo-icon">🎓</div>
         ISUFST LEADERS
-
     </div>
 
-
-    <ul class="nav-links">
-
-        <li>
-            <a href="#university">
-                University
-            </a>
-        </li>
-
-        <li>
-            <a href="#campus">
-                Campus
-            </a>
-        </li>
-
-        <li>
-            <a href="#deans">
-                Deans
-            </a>
-        </li>
-
-        <li>
-            <a href="#faculty">
-                Faculty
-            </a>
-        </li>
-
-        <li>
-            <a href="#staff">
-                Staff
-            </a>
-        </li>
-
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#university">University</a></li>
+        <li><a href="#campus">Campus</a></li>
+        <li><a href="#deans">Deans</a></li>
+        <li><a href="#faculty">CICI Faculty</a></li>
+        <li><a href="#staff">Staff</a></li>
+        <li><a href="#gallery">Activities</a></li>
     </ul>
 
-</div>
+    <button id="menuBtn" aria-label="Menu">☰</button>
 
+</div>
 </nav>
 
-
-<!-- =========================================================
-     HERO
-========================================================= -->
-
+<!-- HERO -->
 <header class="hero">
 
     <div class="circle1"></div>
-
     <div class="circle2"></div>
-
     <div class="tech-line line1"></div>
-
     <div class="tech-line line2"></div>
-
     <div class="tech-line line3"></div>
-
 
     <div class="hero-content">
 
-
         <div class="status">
-
             <span class="status-dot"></span>
-
             ITPE3 • WEB SYSTEMS TECHNOLOGIES
-
         </div>
 
-
         <h1>
-
             Meet the
-
-            <span>
-                Campus
-            </span>
-
+            <span id="typed" class="typed">Campus</span>
             <br>
-
             Leaders.
-
         </h1>
 
-
         <p class="hero-description">
-
             A digital leadership directory showcasing the
             university officials, campus administrators,
             college deans, faculty members, and staff who
             help build a stronger academic community.
-
         </p>
 
-
         <div class="hero-tags">
-
-            <div class="hero-tag">
-                🎓 1st Semester
-            </div>
-
-            <div class="hero-tag">
-                📚 AY 2026–2027
-            </div>
-
-            <div class="hero-tag">
-                💻 College of Informatics and Computing Innovations
-            </div>
-
-
+            <div class="hero-tag">🎓 1st Semester</div>
+            <div class="hero-tag">📚 AY 2026–2027</div>
+            <div class="hero-tag">💻 College of Informatics and Computing Innovations</div>
         </div>
-
 
     </div>
 
 </header>
 
-
-<!-- =========================================================
-     SEARCH
-========================================================= -->
-
+<!-- SEARCH -->
 <div class="search-wrapper">
-
 <div class="search-box">
 
-    <span class="search-icon">
-        🔎
-    </span>
+    <span class="search-icon">🔎</span>
 
+    <input type="text" id="searchInput" placeholder="Search a leader, dean, faculty or staff...  (press / )">
 
-    <input
-        type="text"
-        id="searchInput"
-        placeholder="Search a leader, dean, faculty or staff..."
-    >
-
-
-    <span
-        class="search-count"
-        id="searchCount"
-    >
-        16 PEOPLE
-    </span>
+    <span class="search-count" id="searchCount">16 PEOPLE</span>
 
 </div>
-
 </div>
 
-
-<!-- =========================================================
-     MAIN
-========================================================= -->
-
+<!-- MAIN -->
 <main>
 
-
-<!-- =========================================================
-     UNIVERSITY
-========================================================= -->
-
-<section id="university" class="reveal">
-
+<!-- HOME: MISSION, VISION, CORE VALUES -->
+<section id="home" class="page active reveal">
 
 <div class="section-heading">
-
     <span class="section-number"></span>
+    <h2>ISUFST Mission &amp; Vision</h2>
+    <p>Iloilo State University of Fisheries Science and Technology</p>
+</div>
 
-    <h2>
-        University Leaders
-    </h2>
+<div class="mv-grid">
 
-    <p>
-        Leading the institution toward excellence.
-    </p>
+    <div class="mv-card">
+        <span class="mv-icon">🔭</span>
+        <h3>VISION</h3>
+        <p>To be a leading and empowering research university in fisheries, agriculture, education, maritime studies, arts, sciences, and technology across Southeast Asia by 2030.</p>
+    </div>
+
+    <div class="mv-card">
+        <span class="mv-icon">🎯</span>
+        <h3>MISSION</h3>
+        <p>To produce globally competitive and empowered graduates in these fields, and to equip individuals and communities to become self-sufficient and help build the nation.</p>
+    </div>
 
 </div>
 
+<div class="section-heading" style="margin-top:90px">
+    <span class="section-number"></span>
+    <h2>Core Values</h2>
+    <p>The guiding principles of ISUFST.</p>
+</div>
+
+<div class="values">
+
+    <div class="value"><b>I</b><h4>Integrity</h4><p>Honesty and strong moral principles in everything we do.</p></div>
+    <div class="value"><b>S</b><h4>Social Justice</h4><p>Fairness and equal opportunity for every member of the community.</p></div>
+    <div class="value"><b>D</b><h4>Discipline</h4><p>Responsibility and self-control in work and in study.</p></div>
+    <div class="value"><b>A</b><h4>Academic Excellence</h4><p>Striving for the highest quality in teaching, learning, and research.</p></div>
+
+</div>
+
+</section>
+
+
+<!-- UNIVERSITY -->
+<section id="university" class="page people reveal">
+
+<div class="section-heading">
+    <span class="section-number"></span>
+    <h2>University Leaders</h2>
+    <p>Leading the institution toward excellence.</p>
+</div>
 
 <div class="feature-card searchable">
 
-
     <div class="feature-photo">
-
-        <img
-            src="1.jpg"
-            alt="University President"
-        >
-
+        <img src="1.jpg" alt="University President">
     </div>
 
-
     <div class="feature-content">
-
-        <span class="feature-label">
-
-            UNIVERSITY PRESIDENT
-
-        </span>
-
-
-        <h3>
-
-            Dr. Nordy Siason, Jr., CESO VI
-
-        </h3>
-
-
-        <span class="feature-position">
-
-            University President
-
-        </span>
-
-
+        <span class="feature-label">UNIVERSITY PRESIDENT</span>
+        <h3>Dr. Nordy Siason, Jr., CESO VI</h3>
+        <span class="feature-position">University President</span>
         <p>
-
             The University President provides leadership
             and direction for the university community,
             supporting academic excellence, development,
             innovation, and institutional growth.
-
         </p>
-
-
     </div>
 
+</div>
 
+<!-- STATS -->
+<div class="stats">
+    <div class="stat"><b data-count="16">0</b><small>LEADERS</small></div>
+    <div class="stat"><b data-count="4">0</b><small>COLLEGES</small></div>
+    <div class="stat"><b data-count="6">0</b><small>FACULTY</small></div>
+    <div class="stat"><b data-count="3">0</b><small>STAFF</small></div>
 </div>
 
 </section>
 
-
-<!-- =========================================================
-     CAMPUS
-========================================================= -->
-
-<section id="campus" class="reveal">
-
+<!-- CAMPUS -->
+<section id="campus" class="page people reveal">
 
 <div class="section-heading">
-
     <span class="section-number"></span>
-
-    <h2>
-        Campus Leadership
-    </h2>
-
-    <p>
-        The people who manage and support campus operations.
-    </p>
-
+    <h2>Campus Leadership</h2>
+    <p>The people who manage and support campus operations.</p>
 </div>
 
-
 <div class="officials">
-
 
 <div class="card campus-card searchable">
-
-    <img
-        src="2.jpg"
-        alt="Campus Administrator"
-    >
-
-    <h3>
-        Michael B. Dizon, EdD, PhD
-    </h3>
-
-    <span class="position">
-        CAMPUS ADMINISTRATOR
-    </span>
-
+    <img src="2.jpg" alt="Campus Administrator">
+    <h3>Michael B. Dizon, EdD, PhD</h3>
+    <span class="position">CAMPUS ADMINISTRATOR</span>
 </div>
-
 
 <div class="card campus-card searchable">
-
-    <img
-        src="3.jpg"
-        alt="Administrative Officer"
-    >
-
-    <h3>
-        Melby P. Parreño, MILE
-    </h3>
-
-    <span class="position">
-        ADMINISTRATIVE OFFICER
-    </span>
-
+    <img src="3.jpg" alt="Administrative Officer">
+    <h3>Melby P. Parreño, MILE</h3>
+    <span class="position">ADMINISTRATIVE OFFICER</span>
 </div>
-
 
 </div>
 
 </section>
 
-
-<!-- =========================================================
-     DEANS
-========================================================= -->
-
-<section id="deans" class="reveal">
-
+<!-- DEANS -->
+<section id="deans" class="page people reveal">
 
 <div class="section-heading">
-
     <span class="section-number"></span>
-
-    <h2>
-        College Deans
-    </h2>
-
-    <p>
-        Academic leaders representing different colleges.
-    </p>
-
+    <h2>College Deans</h2>
+    <p>Academic leaders representing different colleges.</p>
 </div>
-
 
 <div class="officials">
 
-
 <div class="card dean-card searchable">
-
-    <span class="dean-number">
-    
-    </span>
-
-    <img
-        src="4.jpg"
-        alt="Noli L. Gerona"
-    >
-
-    <h3>
-        Noli L. Gerona, PhD
-    </h3>
-
-    <span class="position">
-        DEAN
-    </span>
-
-    <p class="department">
-        College of Agriculture
-    </p>
-
+    <span class="dean-number">DEAN 01</span>
+    <img src="4.jpg" alt="Noli L. Gerona">
+    <h3>Noli L. Gerona, PhD</h3>
+    <span class="position">DEAN</span>
+    <p class="department">College of Agriculture</p>
 </div>
 
-
-
 <div class="card dean-card searchable">
-
-    <span class="dean-number">
-    
-    </span>
-
-    <img
-        src="5.jpg"
-        alt="Rene T. Estomo"
-    >
-
-    <h3>
-        Rene T. Estomo, PhD
-    </h3>
-
-    <span class="position">
-        DEAN
-    </span>
-
-    <p class="department">
-        College of Education
-    </p>
-
+    <span class="dean-number">DEAN 02</span>
+    <img src="5.jpg" alt="Rene T. Estomo">
+    <h3>Rene T. Estomo, PhD</h3>
+    <span class="position">DEAN</span>
+    <p class="department">College of Education</p>
 </div>
 
-
-
 <div class="card dean-card searchable">
-
-    <span class="dean-number">
-    
-    </span>
-
-    <img
-        src="6.jpg"
-        alt="Janice H. Ching"
-    >
-
-    <h3>
-        Janice H. Ching, DDM-ET
-    </h3>
-
-    <span class="position">
-        DEAN
-    </span>
-
-    <p class="department">
-        College of Business, Management
-        and Sustainable Development
-    </p>
-
+    <span class="dean-number">DEAN 03</span>
+    <img src="6.jpg" alt="Janice H. Ching">
+    <h3>Janice H. Ching, DDM-ET</h3>
+    <span class="position">DEAN</span>
+    <p class="department">College of Business, Management and Sustainable Development</p>
 </div>
 
-
-
 <div class="card dean-card searchable">
-
-    <span class="dean-number">
-    
-    </span>
-
-    <img
-        src="7.jpg"
-        alt="Wenda D. Panes"
-    >
-
-    <h3>
-        Wenda D. Panes, EdD
-    </h3>
-
-    <span class="position">
-        DEAN
-    </span>
-
-    <p class="department">
-        College of Informatics and
-        Computing Innovations
-    </p>
-
+    <span class="dean-number">DEAN 04</span>
+    <img src="7.jpg" alt="Wenda D. Panes">
+    <h3>Wenda D. Panes, EdD</h3>
+    <span class="position">DEAN</span>
+    <p class="department">College of Informatics and Computing Innovations</p>
 </div>
-
 
 </div>
 
 </section>
 
-
-<!-- =========================================================
-     FACULTY
-========================================================= -->
-
-<section id="faculty" class="reveal">
-
+<!-- FACULTY -->
+<section id="faculty" class="page people reveal">
 
 <div class="section-heading">
-
     <span class="section-number"></span>
-
-    <h2>
-        CICI Faculty
-    </h2>
-
-    <p>
-        Dedicated educators guiding future technology professionals.
-    </p>
-
+    <h2>CICI Faculty</h2>
+    <p>Dedicated educators guiding future technology professionals.</p>
 </div>
-
 
 <div class="officials">
 
-
 <div class="card person-card searchable">
-
-    <img
-        src="8.jpg"
-        alt="Dr. Wenna J. Bulnes"
-    >
-
-    <h3>
-        Dr. Wenna J. Bulnes
-    </h3>
-
-    <span class="position">
-        CICI FACULTY
-    </span>
-
+    <img src="8.jpg" alt="Dr. Wenna J. Bulnes">
+    <h3>Dr. Wenna J. Bulnes</h3>
+    <span class="position">CICI FACULTY</span>
 </div>
 
-
 <div class="card person-card searchable">
-
-    <img
-        src="9.jpg"
-        alt="Dr. Analiza G. Alingalan"
-    >
-
-    <h3>
-        Dr. Analiza G. Alingalan
-    </h3>
-
-    <span class="position">
-        CICI FACULTY
-    </span>
-
+    <img src="9.jpg" alt="Dr. Analiza G. Alingalan">
+    <h3>Dr. Analiza G. Alingalan</h3>
+    <span class="position">CICI FACULTY</span>
 </div>
 
-
 <div class="card person-card searchable">
-
-    <img
-        src="10.jpg"
-        alt="Dr. Dythne P. Dacudao"
-    >
-
-    <h3>
-        Dr. Dythne P. Dacudao
-    </h3>
-
-    <span class="position">
-        CICI FACULTY
-    </span>
-
+    <img src="10.jpg" alt="Dr. Dythne P. Dacudao">
+    <h3>Dr. Dythne P. Dacudao</h3>
+    <span class="position">CICI FACULTY</span>
 </div>
 
-
 <div class="card person-card searchable">
-
-    <img
-        src="11.jpg"
-        alt="Dr. Ian P. Sugatan"
-    >
-
-    <h3>
-        Dr. Ian P. Sugatan
-    </h3>
-
-    <span class="position">
-        CICI FACULTY
-    </span>
-
+    <img src="11.jpg" alt="Dr. Ian P. Sugatan">
+    <h3>Dr. Ian P. Sugatan</h3>
+    <span class="position">CICI FACULTY</span>
 </div>
 
-
 <div class="card person-card searchable">
-
-    <img
-        src="12.jpg"
-        alt="Instr. Dave Allan A. Tagacay"
-    >
-
-    <h3>
-        Instr. Dave Allan A. Tagacay
-    </h3>
-
-    <span class="position">
-        CICI FACULTY
-    </span>
-
+    <img src="12.jpg" alt="Instr. Dave Allan A. Tagacay">
+    <h3>Instr. Dave Allan A. Tagacay</h3>
+    <span class="position">CICI FACULTY</span>
 </div>
 
-
 <div class="card person-card searchable">
-
-    <img
-        src="13.jpg"
-        alt="Instr. Ivan Silvestre"
-    >
-
-    <h3>
-        Instr. Ivan Silvestre
-    </h3>
-
-    <span class="position">
-        CICI FACULTY
-    </span>
-
+    <img src="13.jpg" alt="Instr. Ivan Silvestre">
+    <h3>Instr. Ivan Silvestre</h3>
+    <span class="position">CICI FACULTY</span>
 </div>
-
 
 </div>
 
 </section>
 
-
-<!-- =========================================================
-     STAFF
-========================================================= -->
-
-<section id="staff" class="reveal">
-
+<!-- STAFF -->
+<section id="staff" class="page people reveal">
 
 <div class="section-heading">
-
     <span class="section-number"></span>
-
-    <h2>
-        CICI Staff
-    </h2>
-
-    <p>
-        The people behind the everyday support of the college.
-    </p>
-
+    <h2>CICI Staff</h2>
+    <p>The people behind the everyday support of the college.</p>
 </div>
-
 
 <div class="officials">
 
-
 <div class="card person-card searchable">
-
-    <img
-        src="14.jpg"
-        alt="Andrea P. Delos Santos"
-    >
-
-    <h3>
-        Andrea P. Delos Santos
-    </h3>
-
-    <span class="position">
-        CICI STAFF
-    </span>
-
+    <img src="14.jpg" alt="Andrea P. Delos Santos">
+    <h3>Andrea P. Delos Santos</h3>
+    <span class="position">CICI STAFF</span>
 </div>
 
-
 <div class="card person-card searchable">
-
-    <img
-        src="15.jpg"
-        alt="Jay Michael O. Borcillo"
-    >
-
-    <h3>
-        Jay Michael O. Borcillo
-    </h3>
-
-    <span class="position">
-        CICI STAFF
-    </span>
-
+    <img src="15.jpg" alt="Jay Michael O. Borcillo">
+    <h3>Jay Michael O. Borcillo</h3>
+    <span class="position">CICI STAFF</span>
 </div>
 
-
 <div class="card person-card searchable">
-
-    <img
-        src="16.jpg"
-        alt="Dwayne Padernal"
-    >
-
-    <h3>
-        Dwayne Padernal
-    </h3>
-
-    <span class="position">
-        CICI STAFF
-    </span>
-
+    <img src="16.jpg" alt="Dwayne Padernal">
+    <h3>Dwayne Padernal</h3>
+    <span class="position">CICI STAFF</span>
 </div>
-
 
 </div>
 
 </section>
 
+<!-- ACQUAINTANCE PARTY GALLERY -->
+<section id="gallery" class="page reveal">
+
+<div class="section-heading">
+    <span class="section-number"></span>
+    <h2>Acquaintance Party</h2>
+    <p>Moments from our school activity.</p>
+</div>
+
+<div class="gallery">
+    <img src="party1.jpg" alt="Acquaintance Party photo 1">
+    <img src="party2.jpg" alt="Acquaintance Party photo 2">
+    <img src="party3.jpg" alt="Acquaintance Party photo 3">
+    <img src="party4.jpg" alt="Acquaintance Party photo 4">
+    <img src="party5.jpg" alt="Acquaintance Party photo 5">
+    <img src="party6.jpg" alt="Acquaintance Party photo 6">
+</div>
+
+</section>
 
 <!-- SEARCH EMPTY -->
-
-<div
-    class="no-results"
-    id="noResults"
->
-
-    <strong>
-        NO MATCH FOUND
-    </strong>
-
-    Try searching another name,
-    position, college, faculty member,
-    or staff member.
-
+<div class="no-results" id="noResults">
+    <strong>NO MATCH FOUND</strong>
+    Try searching another name, position, college, faculty member, or staff member.
 </div>
-
 
 </main>
 
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
-<footer>
-
-
-<div class="footer-grid">
-
-
-    <div class="footer-logo">
-
-        CICI Leadership Directory
-
+<!-- LEADER PROFILE MODAL -->
+<div class="modal" id="modal">
+    <div class="modal-box">
+        <button class="modal-close" id="modalClose">✕</button>
+        <img id="mImg" src="" alt="">
+        <h3 id="mName"></h3>
+        <span class="position" id="mPos"></span>
+        <p id="mDept"></p>
     </div>
-
-
-    <div class="footer-line"></div>
-
-
-    <p>
-        ITPE3 – Web Systems Technologies
-    </p>
-
-
-    <p>
-        1st Semester, AY 2026–2027
-    </p>
-
-
-    <p>
-        © 2026 Desiree Jane Palma
-    </p>
-
-
-    <div class="footer-tech">
-
-        DIGITAL CAMPUS • TECHNOLOGY • LEADERSHIP
-
-    </div>
-
-
 </div>
 
+<!-- PHOTO VIEWER -->
+<div class="viewer" id="viewer">
+    <img id="viewerImg" src="" alt="Enlarged photo">
+</div>
+
+<!-- FOOTER -->
+<footer>
+<div class="footer-grid">
+
+    <div class="footer-logo">CICI Leadership Directory</div>
+    <div class="footer-line"></div>
+    <p>ITPE3 – Web Systems Technologies</p>
+    <p>1st Semester, AY 2026–2027</p>
+    <p>© 2026 Desiree Jane Palma</p>
+    <div class="footer-tech">DIGITAL CAMPUS • TECHNOLOGY • LEADERSHIP</div>
+
+</div>
 </footer>
 
-
 <!-- BACK TO TOP -->
+<button id="topButton" title="Back to top">↑</button>
 
-<button
-    id="topButton"
-    title="Back to top"
->
-    ↑
-</button>
-
-
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
-
+<!-- JAVASCRIPT -->
 <script>
 
+/* SEARCH */
+const searchInput = document.getElementById("searchInput");
+const cards = document.querySelectorAll(".searchable");
+const noResults = document.getElementById("noResults");
+const searchCount = document.getElementById("searchCount");
 
-/* =========================================================
-   SEARCH
-========================================================= */
+searchInput.addEventListener("input", function(){
 
-const searchInput =
-    document.getElementById("searchInput");
+    const search = this.value.toLowerCase().trim();
+    let found = 0;
 
-const cards =
-    document.querySelectorAll(".searchable");
+    cards.forEach(function(card){
 
-const noResults =
-    document.getElementById("noResults");
+        const text = card.innerText.toLowerCase();
 
-const searchCount =
-    document.getElementById("searchCount");
-
-
-searchInput.addEventListener(
-    "input",
-    function(){
-
-        const search =
-            this.value
-            .toLowerCase()
-            .trim();
-
-        let found = 0;
-
-
-        cards.forEach(
-            function(card){
-
-                const text =
-                    card.innerText
-                    .toLowerCase();
-
-                if(
-                    text.includes(search)
-                ){
-
-                    card.style.display =
-                    "";
-
-                    found++;
-
-                }else{
-
-                    card.style.display =
-                    "none";
-
-                }
-
-            }
-        );
-
-
-        if(search !== "" && found === 0){
-
-            noResults.style.display =
-            "block";
-
+        if(text.includes(search)){
+            card.style.display = "";
+            found++;
         }else{
-
-            noResults.style.display =
-            "none";
-
+            card.style.display = "none";
         }
 
+    });
 
-        searchCount.innerText =
-        found + " PEOPLE";
-
+    if(search !== "" && found === 0){
+        noResults.style.display = "block";
+    }else{
+        noResults.style.display = "none";
     }
-);
+
+    searchCount.innerText = found + " PEOPLE";
+
+});
 
 
-/* =========================================================
-   SCROLL REVEAL
-========================================================= */
+/* SCROLL REVEAL */
+const revealElements = document.querySelectorAll(".reveal");
 
-const revealElements =
-    document.querySelectorAll(".reveal");
+const revealObserver = new IntersectionObserver(function(entries){
 
-
-const revealObserver =
-    new IntersectionObserver(
-        function(entries){
-
-            entries.forEach(
-                function(entry){
-
-                    if(entry.isIntersecting){
-
-                        entry.target
-                        .classList
-                        .add("visible");
-
-                    }
-
-                }
-            );
-
-        },
-
-        {
-            threshold:.12
+    entries.forEach(function(entry){
+        if(entry.isIntersecting){
+            entry.target.classList.add("visible");
         }
-    );
+    });
+
+}, { threshold:.12 });
+
+revealElements.forEach(function(element){
+    revealObserver.observe(element);
+});
 
 
-revealElements.forEach(
-    function(element){
+/* BACK TO TOP */
+const topButton = document.getElementById("topButton");
 
-        revealObserver.observe(element);
+window.addEventListener("scroll", function(){
 
+    if(window.scrollY > 500){
+        topButton.classList.add("show");
+    }else{
+        topButton.classList.remove("show");
     }
-);
+
+});
+
+topButton.addEventListener("click", function(){
+    window.scrollTo({ top:0, behavior:"smooth" });
+});
 
 
-/* =========================================================
-   BACK TO TOP
-========================================================= */
+/* GALLERY VIEWER */
+const viewer = document.getElementById("viewer");
+const viewerImg = document.getElementById("viewerImg");
 
-const topButton =
-    document.getElementById("topButton");
+document.querySelectorAll(".gallery img").forEach(function(img){
+
+    img.addEventListener("click", function(){
+        viewerImg.src = this.src;
+        viewer.classList.add("show");
+    });
+
+});
+
+viewer.addEventListener("click", function(){
+    viewer.classList.remove("show");
+});
 
 
-window.addEventListener(
-    "scroll",
-    function(){
+/* SCROLL PROGRESS + MOUSE GLOW */
+const progress = document.getElementById("progress");
+const glow = document.getElementById("glow");
 
-        if(window.scrollY > 500){
+window.addEventListener("scroll", function(){
+    const max = document.documentElement.scrollHeight - innerHeight;
+    progress.style.width = (scrollY / max * 100) + "%";
+});
 
-            topButton.classList
-            .add("show");
+window.addEventListener("mousemove", function(e){
+    glow.style.left = e.clientX + "px";
+    glow.style.top = e.clientY + "px";
+});
 
-        }else{
 
-            topButton.classList
-            .remove("show");
+/* TYPING WORDS */
+const words = ["Campus","Inspiring","Innovative","Visionary"];
+const typed = document.getElementById("typed");
+let w = 0, c = words[0].length, erasing = true;
 
-        }
-
+function typeLoop(){
+    typed.textContent = words[w].slice(0,c);
+    if(erasing){
+        c--;
+        if(c < 0){ erasing = false; w = (w+1) % words.length; c = 0; }
+        setTimeout(typeLoop, 60);
+    }else{
+        c++;
+        if(c > words[w].length){ erasing = true; setTimeout(typeLoop, 1600); return; }
+        setTimeout(typeLoop, 110);
     }
-);
+}
+setTimeout(typeLoop, 1800);
 
 
-topButton.addEventListener(
-    "click",
-    function(){
+/* STAT COUNTERS */
+const statObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+        if(!entry.isIntersecting) return;
+        const el = entry.target;
+        const goal = +el.dataset.count;
+        let n = 0;
+        const t = setInterval(function(){
+            n++;
+            el.textContent = n;
+            if(n >= goal) clearInterval(t);
+        }, 90);
+        statObserver.unobserve(el);
+    });
+}, { threshold:.6 });
 
-        window.scrollTo({
-            top:0,
-            behavior:"smooth"
-        });
-
-    }
-);
+document.querySelectorAll("[data-count]").forEach(function(el){
+    statObserver.observe(el);
+});
 
 
-/* =========================================================
-   IMAGE ERROR FALLBACK
-========================================================= */
+/* 3D CARD TILT */
+document.querySelectorAll(".card").forEach(function(card){
 
-document
-.querySelectorAll("img")
-.forEach(
-    function(img){
+    card.addEventListener("mousemove", function(e){
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - .5;
+        const y = (e.clientY - r.top) / r.height - .5;
+        card.style.transition = "transform .08s";
+        card.style.transform =
+            "perspective(800px) rotateX(" + (-y*12) + "deg) rotateY(" + (x*12) + "deg) translateY(-12px)";
+    });
 
-        img.addEventListener(
-            "error",
-            function(){
+    card.addEventListener("mouseleave", function(){
+        card.style.transition = "";
+        card.style.transform = "";
+    });
 
-                this.style.opacity =
-                "0.25";
+});
 
+
+/* FLOATING PARTICLES */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+let dots = [];
+
+function sizeCanvas(){
+    canvas.width = innerWidth;
+    canvas.height = innerHeight;
+}
+sizeCanvas();
+window.addEventListener("resize", sizeCanvas);
+
+for(let i = 0; i < 50; i++){
+    dots.push({
+        x:Math.random()*innerWidth, y:Math.random()*innerHeight,
+        vx:(Math.random()-.5)*.4, vy:(Math.random()-.5)*.4
+    });
+}
+
+function drawDots(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    dots.forEach(function(d,i){
+        d.x += d.vx; d.y += d.vy;
+        if(d.x<0||d.x>canvas.width) d.vx *= -1;
+        if(d.y<0||d.y>canvas.height) d.vy *= -1;
+        ctx.fillStyle = "rgba(255,47,167,.6)";
+        ctx.beginPath(); ctx.arc(d.x,d.y,1.6,0,6.3); ctx.fill();
+        for(let j = i+1; j < dots.length; j++){
+            const dx = d.x-dots[j].x, dy = d.y-dots[j].y;
+            const dist = Math.sqrt(dx*dx+dy*dy);
+            if(dist < 130){
+                ctx.strokeStyle = "rgba(139,53,255," + (.22*(1-dist/130)) + ")";
+                ctx.beginPath(); ctx.moveTo(d.x,d.y); ctx.lineTo(dots[j].x,dots[j].y); ctx.stroke();
             }
-        );
+        }
+    });
+    requestAnimationFrame(drawDots);
+}
+drawDots();
 
+
+/* MOBILE MENU */
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click", function(){
+    navLinks.classList.toggle("open");
+});
+
+navLinks.querySelectorAll("a").forEach(function(a){
+    a.addEventListener("click", function(){
+        navLinks.classList.remove("open");
+    });
+});
+
+
+/* LEADER PROFILE MODAL */
+const modal = document.getElementById("modal");
+
+document.querySelectorAll(".searchable").forEach(function(card){
+
+    card.addEventListener("click", function(){
+
+        const img = card.querySelector("img");
+        const pos = card.querySelector(".position, .feature-position");
+        const dept = card.querySelector(".department, .feature-content p");
+
+        document.getElementById("mImg").src = img.src;
+        document.getElementById("mName").textContent = card.querySelector("h3").textContent.trim();
+        document.getElementById("mPos").textContent = pos ? pos.textContent.trim() : "";
+        document.getElementById("mDept").textContent = dept ? dept.textContent.replace(/\s+/g," ").trim() : "";
+
+        modal.classList.add("show");
+
+    });
+
+});
+
+modal.addEventListener("click", function(e){
+    if(e.target === modal || e.target.id === "modalClose"){
+        modal.classList.remove("show");
     }
-);
+});
+
+
+/* KEYBOARD SHORTCUTS */
+const galleryImgs = Array.from(document.querySelectorAll(".gallery img"));
+
+document.addEventListener("keydown", function(e){
+
+    if(e.key === "Escape"){
+        modal.classList.remove("show");
+        viewer.classList.remove("show");
+        navLinks.classList.remove("open");
+    }
+
+    if(e.key === "/" && document.activeElement !== searchInput){
+        e.preventDefault();
+        searchInput.focus();
+    }
+
+    if(viewer.classList.contains("show") && (e.key === "ArrowRight" || e.key === "ArrowLeft")){
+        let i = galleryImgs.findIndex(function(g){ return g.src === viewerImg.src; });
+        i = (i + (e.key === "ArrowRight" ? 1 : -1) + galleryImgs.length) % galleryImgs.length;
+        viewerImg.src = galleryImgs[i].src;
+    }
+
+});
+
+
+/* PAGE NAVIGATION */
+const pages = document.querySelectorAll(".page");
+const searchWrapper = document.querySelector(".search-wrapper");
+let firstLoad = true;
+
+function showPage(){
+
+    let id = location.hash.replace("#","");
+    const target = document.getElementById(id);
+
+    if(!target || !target.classList.contains("page")){
+        id = "home";
+    }
+
+    pages.forEach(function(p){
+        p.classList.toggle("active", p.id === id);
+    });
+
+    navLinks.querySelectorAll("a").forEach(function(a){
+        a.classList.toggle("active", a.getAttribute("href") === "#" + id);
+    });
+
+    searchInput.value = "";
+    searchInput.dispatchEvent(new Event("input"));
+
+    if(!firstLoad){
+        window.scrollTo({ top: searchWrapper.offsetTop - 90, behavior:"smooth" });
+    }
+
+    firstLoad = false;
+
+}
+
+window.addEventListener("hashchange", showPage);
+
+document.querySelector(".logo").addEventListener("click", function(){
+    location.hash = "#home";
+});
+
+searchInput.addEventListener("input", function(){
+    document.body.classList.toggle("searching", this.value.trim() !== "");
+});
+
+showPage();
+
+
+/* IMAGE ERROR FALLBACK */
+document.querySelectorAll("img").forEach(function(img){
+
+    img.addEventListener("error", function(){
+        this.style.opacity = "0.25";
+    });
+
+});
 
 </script>
 
-
 </body>
-
 </html>
-```
