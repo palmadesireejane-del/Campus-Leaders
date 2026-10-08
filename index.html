@@ -290,8 +290,25 @@ section{ margin-bottom:125px; scroll-margin-top:100px; }
 }
 .viewer.show{ display:flex; }
 .viewer img{
-    max-width:90%; max-height:90%; border-radius:15px; border:4px solid white;
-    box-shadow:0 0 60px rgba(255,47,167,.3);
+    width:auto; height:auto; max-width:94vw; max-height:86vh; object-fit:contain; cursor:default;
+    border-radius:14px; box-shadow:0 0 70px rgba(255,47,167,.35);
+    image-rendering:auto;
+}
+.v-btn{
+    position:absolute; z-index:2; width:50px; height:50px; border:none; border-radius:50%;
+    cursor:pointer; color:white; font-size:26px; line-height:1;
+    background:rgba(255,255,255,.12); backdrop-filter:blur(6px); transition:.3s;
+}
+.v-btn:hover{ background:var(--pink); box-shadow:0 0 25px rgba(255,47,167,.5); }
+.v-close{ top:20px; right:20px; font-size:20px; }
+.v-prev{ left:20px; top:50%; transform:translateY(-50%); }
+.v-next{ right:20px; top:50%; transform:translateY(-50%); }
+.v-count{ position:absolute; top:28px; left:50%; transform:translateX(-50%); color:#cfc0d9; font-size:12px; font-weight:800; letter-spacing:3px; }
+@media(max-width:600px){
+    .viewer img{ height:auto; max-height:80vh; }
+    .v-prev,.v-next{ top:auto; bottom:60px; transform:none; }
+    .v-prev{ left:25%; }
+    .v-next{ right:25%; }
 }
 
 /* EMPTY SEARCH */
@@ -784,7 +801,7 @@ body.searching .page.people{display:block;}
 
 <!-- ACTIVITY 1 -->
 <div class="activity-title">
-    <h3>Campus Acquaintance Party</h3>
+    <h3>Acquaintance Party</h3>
     <p>A day filled with smiles, laughter, new connections, and beautiful memories. Sometimes, the best memories come from the simplest moments we share with others.</p>
 </div>
 
@@ -808,7 +825,7 @@ body.searching .page.people{display:block;}
 <!-- ACTIVITY 2 -->
 <div class="activity-title second">
     <h3>CICI Acquaintance Party</h3>
-    <p>Different people, different stories, but one CICI family.</p>
+    <p>Add your description for the CICI Acquaintance Party here.</p>
 </div>
 
 <div class="gallery">
@@ -851,7 +868,11 @@ body.searching .page.people{display:block;}
 
 <!-- PHOTO VIEWER -->
 <div class="viewer" id="viewer">
+    <button class="v-btn v-close" id="vClose" aria-label="Close">✕</button>
+    <button class="v-btn v-prev" id="vPrev" aria-label="Previous">‹</button>
     <img id="viewerImg" src="" alt="Enlarged photo">
+    <button class="v-btn v-next" id="vNext" aria-label="Next">›</button>
+    <div class="v-count" id="vCount"></div>
 </div>
 
 <!-- FOOTER -->
@@ -949,17 +970,48 @@ topButton.addEventListener("click", function(){
 const viewer = document.getElementById("viewer");
 const viewerImg = document.getElementById("viewerImg");
 
-document.querySelectorAll(".gallery img").forEach(function(img){
+let viewerGroup = [];
+let viewerIndex = 0;
 
-    img.addEventListener("click", function(){
-        viewerImg.src = this.src;
-        viewer.classList.add("show");
+function showViewer(){
+    viewerImg.src = viewerGroup[viewerIndex].src;
+    document.getElementById("vCount").textContent = (viewerIndex + 1) + " / " + viewerGroup.length;
+    viewer.classList.add("show");
+}
+
+function stepViewer(dir){
+    viewerIndex = (viewerIndex + dir + viewerGroup.length) % viewerGroup.length;
+    showViewer();
+}
+
+document.querySelectorAll(".gallery").forEach(function(gal){
+
+    const group = Array.from(gal.querySelectorAll("img"));
+
+    group.forEach(function(img, i){
+        img.addEventListener("click", function(){
+            viewerGroup = group;
+            viewerIndex = i;
+            showViewer();
+        });
     });
 
 });
 
-viewer.addEventListener("click", function(){
-    viewer.classList.remove("show");
+document.getElementById("vPrev").addEventListener("click", function(e){
+    e.stopPropagation();
+    stepViewer(-1);
+});
+
+document.getElementById("vNext").addEventListener("click", function(e){
+    e.stopPropagation();
+    stepViewer(1);
+});
+
+viewer.addEventListener("click", function(e){
+    if(e.target === viewer || e.target.id === "vClose"){
+        viewer.classList.remove("show");
+    }
 });
 
 
@@ -1140,10 +1192,9 @@ document.addEventListener("keydown", function(e){
         searchInput.focus();
     }
 
-    if(viewer.classList.contains("show") && (e.key === "ArrowRight" || e.key === "ArrowLeft")){
-        let i = galleryImgs.findIndex(function(g){ return g.src === viewerImg.src; });
-        i = (i + (e.key === "ArrowRight" ? 1 : -1) + galleryImgs.length) % galleryImgs.length;
-        viewerImg.src = galleryImgs[i].src;
+    if(viewer.classList.contains("show")){
+        if(e.key === "ArrowRight") stepViewer(1);
+        if(e.key === "ArrowLeft") stepViewer(-1);
     }
 
 });
@@ -1199,7 +1250,13 @@ showPage();
 document.querySelectorAll("img").forEach(function(img){
 
     img.addEventListener("error", function(){
-        this.style.opacity = "0.25";
+        if(this.getAttribute("src")){
+            this.style.opacity = "0.25";
+        }
+    });
+
+    img.addEventListener("load", function(){
+        this.style.opacity = "";
     });
 
 });
